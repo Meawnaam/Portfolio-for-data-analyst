@@ -21,15 +21,19 @@ def pyc_game() :
 
         if (user_press == "1") :
             while True :
+                print("\n")
                 print("Bot choose XXX\n")
                 print(pyc.to_string(index = False))
-                user_choose = int(input("What do you want to choose ? 0, 1, 2 or 3 to get back?: "))
-                user_choose_sign = pyc[pyc["key"]== user_choose]["sign"].to_string(index = False)
-                print(f"You have choosed {user_choose_sign}. \n")
-                bot_choose = rd.choice(sign)
-                print(f"Bot has choosed {bot_choose}. \n")
+                print("\n")
+                user_choose = int(input("What do you want to choose ? 0, 1, 2 or 3 to get back?: \n"))
 
-                if (user_choose in key) :
+                if user_choose == 3 :
+                    break
+                elif (user_choose in key) :
+                    user_choose_sign = pyc[pyc["key"]== user_choose]["sign"].to_string(index = False)
+                    print(f"You have choosed {user_choose_sign}.")
+                    bot_choose = rd.choice(sign)
+                    print(f"Bot has choosed {bot_choose}.")
                     # Win loop
                     if (user_choose_sign == "paper" and bot_choose == "hammer" or \
                         user_choose_sign == "hammer" and bot_choose == "scissor" or\
@@ -54,12 +58,11 @@ def pyc_game() :
                         user_choose_sign == "paper" and bot_choose == "scissor") :
                         print("You lose! \n")
                         lose +=1
-                        print(f"Win : {win} \n")
-                        print(f"Lose : {lose} \n")
-                        print(f"Draw : {draw} \n")
+                        print(f"Win : {win}")
+                        print(f"Lose : {lose}")
+                        print(f"Draw : {draw}")
 
-                elif (user_choose == "3") :
-                    break
+
 
                 else :
                     print("Invalid input X!")
